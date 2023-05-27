@@ -5,7 +5,7 @@ BAP python bindings
 Install python bindings with pip (after you have installed `bap`):
 
 ```bash
-$ pip install bap
+$ pip install -e .
 ```
 
 Alternatively you can just copy paste files into your project, or clone it
