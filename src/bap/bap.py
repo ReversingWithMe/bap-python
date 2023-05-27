@@ -110,7 +110,13 @@ def run(path, args=[], bap='bap', parser=adt_project_parser):
 
 
     """
-    opts = [bap, path] + args
+    import os
+    binpath = os.path.abspath(path).replace('\\', '/')
+    bap = ['docker', 'run', '--rm', '-v', f"{binpath}:{'/home/opam/bin'}", 'binaryanalysisplatform/bap', 'bap']
+    
+    # Bap command, virtual mount, use virtual mount as argument
+    opts = bap + ['bin']
+    opts += args
 
     if parser and 'format' in parser:
         opts += ['-d{format}'.format(**parser)]
